@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="450" height="450" style="border:4px solid #dc19c9d7;">
+        <script>
+
+
+            var canvas = document.getElementById('mycanvas');
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = "rgb(125,136,229)";
+            ctx.fillRect(10, 10, 90, 90);
+
+            ctx.fillStyle = "rgb(205,0,9)";
+            ctx.fillRect(80, 80, 90, 90);
+
+            ctx.fillStyle = "rgba(255, 150, 255, 0.8)";
+            ctx.fillRect(150, 150, 90, 90);
+
+            //triangulo
+            ctx.beginPath();
+            ctx.moveTo(185, 10);
+            ctx.lineTo(250, 65);
+            ctx.lineTo(125, 65);
+            ctx.fill();
+            ctx.closePath();
+
+            //linea
+            ctx.beginPath();
+            ctx.moveTo(250, 65);
+            ctx.lineTo(290, 125);
+            ctx.stroke();
+            ctx.closePath();
+
+            //circulos
+            ctx.fillStyle="gray";
+            ctx.beginPath();
+            ctx.arc(40, 250, 35, 0, 2 * Math.PI);
+           // ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.arc(120, 250, 35, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+
+
+
+
+                //Camacho Delgado Hannia Martha IDS TM 7Mo
+
+
+        </script>
+</body>
+
+</html>
