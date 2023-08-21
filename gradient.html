@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient</title>
+</head>
+<style>
+    Canvas {
+        background-color: rgb(0, 0, 0);
+        border-style: double;
+        border-width: 10px;
+        border-color: #ffc0cb;
+    }
+</style>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        // Create gradient
+        var gradient = ctx.createLinearGradient(20, 50, 100, 2);
+        gradient.addColorStop(0, "#ffdddd");
+        gradient.addColorStop("0.5", "#ffffcf");
+        gradient.addColorStop("0.8", "#d9ffdf");
+        gradient.addColorStop(1, "#d9ffff");
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(20, 20, 160, 100);
+
+//Camacho Delgado Hannia Martha
+
+    </script>
+
+</body>
+
+</html>
