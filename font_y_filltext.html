@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill y Font</title>
+</head>
+<style>
+    Canvas {
+        background-color: rgb(206, 197, 197);
+        border-style: double;
+        border-width: 10px;
+        border-color: #ffc0cb;
+    }
+</style>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.fillStyle = "#9400D3";
+        ctx.font = "20px Arial Black";
+        ctx.fillText("Hola mundo!", 15, 40);
+
+        ctx.strokeStyle = "#0000FF";
+        ctx.strokeText("Hola mundo!", 15, 98);
+//Camacho Delgado Hannia Martha
+
+    </script>
+
+</body>
+
+</html>
