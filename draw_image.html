@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill y Font</title>
+</head>
+<style>
+    Canvas {
+        background-color: rgb(157, 25, 169);
+        border-style: double;
+        border-width: 10px;
+        border-color: #ffc0cb;
+    }
+</style>
+
+<body>
+
+    <img id="kitty" src="hot-dog.png" width="220" height="277" style="display:none">
+
+    <canvas id="myCanvas" width="400" height="400" >
+        
+    </canvas>
+
+    <script>
+        document.getElementById("kitty").onload = function () {
+            const c = document.getElementById("myCanvas");
+            const ctx = c.getContext("2d");
+            var img = document.getElementById("kitty");
+
+            ctx.drawImage(img, 10, 10, 300, 300);
+
+        };
+    </script>
+
+</body>
+
+</html>
