@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="500" height="500" style="border:4px solid #dc19c9d7;">
+        <script>
+            var canvas = document.getElementById('mycanvas');
+            var ctx = canvas.getContext("2d");
+            var x = 255, y = 255;
+            var dir = 0;
+            document.addEventListener("keydown", (e) => {
+
+                switch (e.keyCode) {
+                    case 87:
+                        dir = e.keyCode;
+                        break;
+                    case 83:
+                        dir = e.keyCode;
+                        break;
+                    case 68:
+                        dir = e.keyCode;
+                        break;
+                    case 65:
+                        dir = e.keyCode;
+                        break;
+                }
+                // ctx.fillStyle = random_rgba();;
+                // repaint();
+            }
+
+
+            );
+
+            function repaint() {
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, 500, 500);
+                ctx.fillStyle = random_rgba();;
+                ctx.fillRect(x, y, 50, 50);
+                ctx.strokeRect(x, y, 50, 50);
+            }
+            function random_rgba() {
+                var o = Math.round, r = Math.random, s = 255;
+                return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(1) + ')';
+            };
+
+
+            function update() {
+                switch (dir) {
+                    case 87:
+                        
+                        y -= 10;
+                        if (y < -50) { y = 550; };
+                        
+                        break;
+                    case 83:
+                        y += 10;
+                        if (y > 550) { y = -50; };
+                        
+                        break;
+                    case 68:
+                        x += 10;
+                        if (x > 550) { x = -50; };
+                        
+                        break;
+                    case 65:
+                        x -= 10;
+                        if (x < -50) { x = 550; };
+                        
+                        break;
+                }
+                repaint();
+                window.requestAnimationFrame(update);
+            };
+
+            window.requestAnimationFrame = (function () {
+                return window.requestAnimationFrame ||
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame ||
+                    function (callback) {
+                        window.setTimeout(callback, 17);
+                    };
+            }());
+            window.requestAnimationFrame(update);
+
+        </script>
+
+</body>
+
+</html>
