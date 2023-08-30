@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paisaje</title>
+    <style>
+        Canvas {
+            border-style: double;
+            border-width: 10px;
+            border-color: #ffc0cb;
+        }
+    </style>
+
+<body>
+    <canvas id="myCanvas" width="600" height="603"></canvas>
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // fondo gradiente
+        var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height / 1.5);
+        gradient.addColorStop(0, "rgba(193,122,166,0.8)");
+        gradient.addColorStop("0.4", "rgba(220,173,131,0.8)");
+        gradient.addColorStop(1, "#E5E99C");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height / 1.5);
+
+        //sol
+        ctx.fillStyle = "rgba(233,175,127,1)";
+        ctx.beginPath();
+        ctx.arc(300, 340, 144, 0, 2 * Math.PI);
+        ctx.fill();
+
+        //Morado montaña claro: #A58EC4
+        ctx.fillStyle = "#A58EC4";
+        ctx.beginPath();
+        ctx.lineTo(0, 320);
+        ctx.lineTo(46, 319);
+        ctx.lineTo(180, 379);
+        ctx.lineTo(98, 407);
+        ctx.lineTo(0, 368);
+        ctx.fill();
+        ctx.closePath();
+
+        // Morado montaña claro-oscuro: #745EA9
+        ctx.fillStyle = "#745EA9";
+        ctx.beginPath();
+        ctx.lineTo(98, 406);
+        ctx.lineTo(334, 328);
+        ctx.lineTo(428, 332);
+        ctx.lineTo(530, 299);
+        ctx.lineTo(600, 307);
+        ctx.lineTo(600, 371);
+        ctx.lineTo(497, 354);
+        ctx.lineTo(310, 417);
+        ctx.lineTo(98, 417);
+        ctx.fill();
+        ctx.closePath();
+
+        //Morado montaña oscuro: #5D4B9F
+        ctx.fillStyle = "#5D4B9F";
+        ctx.beginPath();
+        ctx.lineTo(310, 417);
+        ctx.lineTo(496, 353);
+        ctx.lineTo(600, 370);
+        ctx.lineTo(600, 417);
+        ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.fillStyle = "#5D4B9F";
+        ctx.lineTo(0, 368);
+        ctx.lineTo(124, 417);
+        ctx.lineTo(0, 417);
+        ctx.fill();
+        ctx.closePath();
+
+
+        //Reflejo medio
+        var grad = ctx.createLinearGradient(500, 417, 0, 382);
+        grad.addColorStop(0, "#BF9BC9");
+        grad.addColorStop(1, "#DABEBB");
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.lineTo(101, 428);
+        ctx.lineTo(124, 417);
+        ctx.lineTo(307, 417);
+        ctx.lineTo(498, 482);
+        ctx.lineTo(600, 463);
+        ctx.lineTo(600, 553);
+        ctx.lineTo(574, 541);
+        ctx.lineTo(531, 542);
+        ctx.lineTo(426, 498);
+        ctx.lineTo(332, 502);
+        ctx.closePath();
+        ctx.fill();
+
+        //Primer reflejo
+        var gradie = ctx.createLinearGradient(0, 417, 0, 482);
+        grad.addColorStop(0, "#BF9BC9");
+        gradie.addColorStop(1, "#C5AEB4");
+
+        ctx.fillStyle = gradie;
+
+        ctx.beginPath();
+        ctx.lineTo(498, 482);
+        ctx.lineTo(307, 417);
+        ctx.lineTo(600, 417);
+        ctx.lineTo(600, 463);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.lineTo(0, 448);
+        ctx.lineTo(0, 417);
+        ctx.lineTo(127, 417);
+        ctx.lineTo(101, 428);
+        ctx.fill();
+
+        // Reflejo final
+        var gra = ctx.createLinearGradient(450, 400, 0, 600);
+        gra.addColorStop(0, "#A587BD");
+        gra.addColorStop(1, "#F2DBB2");
+
+        ctx.fillStyle = gra;
+        ctx.beginPath();
+        ctx.moveTo(0, 600);
+        ctx.lineTo(0, 448);
+        ctx.lineTo(101, 428);
+        ctx.lineTo(332, 502);
+        ctx.lineTo(426, 498);
+        ctx.lineTo(531, 542);
+        ctx.lineTo(574, 541);
+        ctx.lineTo(600, 553);
+        ctx.lineTo(600, 600);
+        ctx.closePath();
+        ctx.fill();
+
+    </script>
+</body>
+
+</html>
