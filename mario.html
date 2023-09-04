@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar</title>
+    <style>
+        Canvas {
+            border-style: double;
+            border-width: 10px;
+            border-color: #ffc0cb;
+            background-color: #B3EEFE;
+        }
+    </style>
+
+<body>
+    <canvas id="myCanvas" width="640" height="360"></canvas>
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const mario = new Image();
+        mario.src = "Mario.png";
+        mario.onload = function () {
+            ctx.drawImage(mario, 318, 260, 50, 62);
+        }
+        const fireBall = new Image();
+        fireBall.src = "Fire_Ball.png";
+        fireBall.onload = function () {
+            ctx.drawImage(fireBall, 388, 217);
+        }
+        const flower = new Image();
+        flower.src = "Flower.png";
+        flower.onload = function () {
+            ctx.drawImage(flower, 440, 165);
+        }
+
+        class Rectangulo {
+            constructor(ctx, x, y, ancho, alto, color, radioEsquinas) {
+                this.ctx = ctx;
+                this.x = x;
+                this.y = y;
+                this.ancho = ancho;
+                this.alto = alto;
+                this.color = color;
+                this.radioEsquinas = radioEsquinas;
+            }
+
+            dibujarrec() {
+                this.ctx.fillStyle = this.color;
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.x + this.radioEsquinas, this.y);
+                this.ctx.lineTo(this.x + this.ancho - this.radioEsquinas, this.y);
+                this.ctx.arc(this.x + this.ancho - this.radioEsquinas, this.y + this.radioEsquinas, this.radioEsquinas, -Math.PI / 2, 0);
+                this.ctx.lineTo(this.x + this.ancho, this.y + this.alto - this.radioEsquinas);
+                this.ctx.arc(this.x + this.ancho - this.radioEsquinas, this.y + this.alto - this.radioEsquinas, this.radioEsquinas, 0, Math.PI / 2);
+                this.ctx.lineTo(this.x + this.radioEsquinas, this.y + this.alto);
+                this.ctx.arc(this.x + this.radioEsquinas, this.y + this.alto - this.radioEsquinas, this.radioEsquinas, Math.PI / 2, Math.PI);
+                this.ctx.lineTo(this.x, this.y + this.radioEsquinas);
+                this.ctx.arc(this.x + this.radioEsquinas, this.y + this.radioEsquinas, this.radioEsquinas, Math.PI, -Math.PI / 2);
+                this.ctx.closePath();
+                this.ctx.fill();
+            }
+        }
+
+        const rectangulos = [
+            new Rectangulo(ctx, 430, 214, 78, 30, "black", 10),
+            new Rectangulo(ctx, 231, 132, 121, 200, "black", 10),
+            new Rectangulo(ctx, 221, 122, 121, 200, "#84C0FF", 10),
+            new Rectangulo(ctx, 425, 211, 78, 30, "#178719", 10),
+
+        ];
+
+        rectangulos.forEach((rectangulo) => {
+            rectangulo.dibujarrec();
+        });
+
+
+
+        class Cuadrado {
+            constructor(ctx, x, y, lado, color, radioEsquinas) {
+                this.ctx = ctx;
+                this.x = x;
+                this.y = y;
+                this.lado = lado;
+                this.color = color;
+                this.radioEsquinas = radioEsquinas;
+            }
+
+            dibujar() {
+                this.ctx.fillStyle = this.color;
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.x + this.radioEsquinas, this.y);
+                this.ctx.lineTo(this.x + this.lado - this.radioEsquinas, this.y);
+                this.ctx.arc(this.x + this.lado - this.radioEsquinas, this.y + this.radioEsquinas, this.radioEsquinas, -Math.PI / 2, 0);
+                this.ctx.lineTo(this.x + this.lado, this.y + this.lado - this.radioEsquinas);
+                this.ctx.arc(this.x + this.lado - this.radioEsquinas, this.y + this.lado - this.radioEsquinas, this.radioEsquinas, 0, Math.PI / 2);
+                this.ctx.lineTo(this.x + this.radioEsquinas, this.y + this.lado);
+                this.ctx.arc(this.x + this.radioEsquinas, this.y + this.lado - this.radioEsquinas, this.radioEsquinas, Math.PI / 2, Math.PI);
+                this.ctx.lineTo(this.x, this.y + this.radioEsquinas);
+                this.ctx.arc(this.x + this.radioEsquinas, this.y + this.radioEsquinas, this.radioEsquinas, Math.PI, -Math.PI / 2);
+                this.ctx.closePath();
+                this.ctx.fill();
+            }
+        }
+
+        const cuadrados = [
+            new Cuadrado(ctx, 153, 215, 118, "black", 10),
+            new Cuadrado(ctx, 554, 215, 118, "black", 10),
+            new Cuadrado(ctx, 25, 167, 40, "black", 10),
+            new Cuadrado(ctx, 107, 49, 40, "black", 10),
+            new Cuadrado(ctx, 148, 49, 40, "black", 10),
+            new Cuadrado(ctx, 587, 88, 40, "black", 10),
+            new Cuadrado(ctx, 430, 247, 78, "black", 10),
+
+            new Cuadrado(ctx, 143, 205, 118, "#FCC4B5", 10),
+            new Cuadrado(ctx, 544, 205, 118, "#51D96B", 10),
+            new Cuadrado(ctx, 20, 162, 40, "#F48D52", 10),
+            new Cuadrado(ctx, 102, 44, 40, "#F48D52", 10),
+            new Cuadrado(ctx, 143, 44, 40, "#F48D52", 10),
+            new Cuadrado(ctx, 582, 83, 40, "#F48D52", 10),
+            new Cuadrado(ctx, 425, 242, 78, "#178719", 10),
+        ];
+
+        cuadrados.forEach((cuadrado) => {
+            cuadrado.dibujar();
+        });
+
+
+        function tornillo(ctx, x, y) {
+            ctx.beginPath();
+            ctx.fillStyle = '#000';
+            ctx.fillRect(x + 5, y + 5, 4, 10);
+
+            ctx.beginPath();
+            ctx.fillStyle = '#000';
+            ctx.fillRect(x + 10, y, 10, 4);
+
+            ctx.beginPath();
+            ctx.fillStyle = '#000';
+            ctx.fillRect(x + 20, y + 5, 4, 10);
+
+            ctx.beginPath();
+            ctx.fillStyle = '#000';
+            ctx.fillRect(x + 10, y + 15, 10, 4);
+
+            ctx.beginPath();
+            ctx.moveTo(x + 10, y + 10);
+            ctx.lineTo(x + 20, y + 5);
+            ctx.stroke();
+        }
+        // tornillos cuadrado coral
+        tornillo(ctx, 150, 215);
+        tornillo(ctx, 225, 215);
+        tornillo(ctx, 150, 290);
+        tornillo(ctx, 225, 290);
+        //tornillos cuadrado azul
+        tornillo(ctx, 228, 132);
+        tornillo(ctx, 305, 132);
+        tornillo(ctx, 305, 290);
+        //tornillos cuadrado verde
+        tornillo(ctx, 551, 212);
+        tornillo(ctx, 551, 287);
+        tornillo(ctx, 626, 212);
+        tornillo(ctx, 626, 287);
+
+        function dibujarPunto(ctx, x, y, color) {
+            ctx.fillStyle = "black";
+            ctx.fillRect(x, y, 4, 4);
+        }
+
+        // primer cuadrado
+        dibujarPunto(ctx, 28, 168);
+        dibujarPunto(ctx, 48, 188);
+        dibujarPunto(ctx, 48, 168);
+        dibujarPunto(ctx, 28, 188);
+        // cuadrado par
+        dibujarPunto(ctx, 110, 50);
+        dibujarPunto(ctx, 130, 50);
+        dibujarPunto(ctx, 130, 70);
+        dibujarPunto(ctx, 110, 70);
+        // cuadrado par
+        dibujarPunto(ctx, 151, 50);
+        dibujarPunto(ctx, 171, 50);
+        dibujarPunto(ctx, 171, 70);
+        dibujarPunto(ctx, 151, 70);
+        // cuadrado al verde
+        dibujarPunto(ctx, 590, 89);
+        dibujarPunto(ctx, 610, 89);
+        dibujarPunto(ctx, 610, 109);
+        dibujarPunto(ctx, 590, 109);
+
+        ctx.fillStyle = "#DD977E";
+        ctx.fillRect(0, 323, 640, 13);
+
+        function dibujarSuelo(ctx) {
+            const blockSize = 10;
+            const numRows = 3;
+            const numCols = 65;
+            const startX = 0;
+            const startY = 337;
+
+            ctx.fillStyle = '#c5721b';
+            ctx.strokeStyle = '#50361b';
+
+            for (let row = 0; row < numRows; row++) {
+                for (let col = 0; col < numCols; col++) {
+                    const x = startX + col * blockSize;
+                    const y = startY + row * blockSize;
+
+                    ctx.beginPath();
+                    ctx.fillRect(x, y, blockSize, blockSize);
+                    ctx.strokeRect(x, y, blockSize, blockSize);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Llama a la función para dibujar el suelo
+        dibujarSuelo(ctx);
+    </script>
+</body>
+
+</html>
