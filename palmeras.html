@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palmera con Canvas</title>
+    <style>
+        Canvas {
+            border-style: double;
+            border-width: 10px;
+            border-color: #ffc0cb;
+            background-color: #2000A0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="660" height="550"></canvas>
+
+    <script>
+        var canvas = document.getElementById('mycanvas');
+        var ctx = canvas.getContext("2d");
+
+        function drawRectangle(x, y, width, height, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height);
+        }
+
+        drawRectangle(500, 290, 15, 100, '#40A000');
+        drawRectangle(350, 190, 22, 200, '#804000');
+        drawRectangle(0, 390, 660, 20, '#80E000');
+        drawRectangle(0, 410, 660, 20, '#40A000');
+        drawRectangle(0, 430, 660, 20, '#006000');
+
+
+        function dibujarSuelo(ctx) {
+            const blockSize = 20;
+            const numRows = 5;
+            const numCols = 75;
+            const startX = 0;
+            const startY = 450;
+
+            const color1 = '#602000';
+            const color2 = '#C06000';
+            let currentColor = color1;
+            for (let row = 0; row < numRows; row++) {
+                for (let col = 0; col < numCols; col++) {
+                    const x = startX + col * blockSize;
+                    const y = startY + row * blockSize;
+
+                    ctx.fillStyle = currentColor;
+                    ctx.strokeStyle = currentColor;
+
+                    ctx.beginPath();
+                    ctx.fillRect(x, y, blockSize, blockSize);
+                    ctx.strokeRect(x, y, blockSize, blockSize);
+                    ctx.stroke();
+
+                    currentColor =
+                        (currentColor === color1) ? color2 : color1;
+                }
+            }
+        }
+        dibujarSuelo(ctx);
+
+        ctx.strokeStyle = "#FFFF00";
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(80, 350, 23, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.arc(150, 350, 23, 0, 2 * Math.PI);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(220, 350, 23, 0, 2 * Math.PI);
+        ctx.stroke();
+
+
+        ctx.strokeStyle = '#006400';
+        function drawLeaf(x, y, width, height) {
+            var numLines = 15;
+            var angleIncrement = (Math.PI) / numLines;
+            for (var i = 0; i < numLines; i++) {
+                var angle = i * angleIncrement;
+                var startX = x + width * Math.cos(angle);
+                var startY = y + height * Math.sin(angle);
+                var endX = x + width * Math.cos(angle + Math.PI);
+                var endY = y + height * Math.sin(angle + Math.PI);
+
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            }
+        }
+
+        drawLeaf(350, 180, 40, 30);
+        drawLeaf(360, 190, 40, 30);
+        drawLeaf(370, 200, 40, 30);
+        drawLeaf(380, 220, 40, 30);
+
+        drawLeaf(330, 170, 40, 30);
+        drawLeaf(320, 180, 40, 30);
+        drawLeaf(310, 190, 40, 30);
+        drawLeaf(300, 200, 40, 30);
+
+        drawLeaf(350, 210, 40, 30);
+        drawLeaf(360, 220, 40, 30);
+        drawLeaf(370, 230, 40, 30);
+        drawLeaf(380, 240, 40, 30);
+
+
+        function drawLeavesInCircle(centerX, centerY, radius, numLeaves) {
+            const angleIncrement = (2 * Math.PI) / numLeaves;
+            const leafWidth = 40;
+            const leafHeight = 30;
+
+            for (let i = 0; i < numLeaves; i++) {
+                const angle = i * angleIncrement;
+                const x = centerX + radius * Math.cos(angle) - leafWidth / 2;
+                const y = centerY + radius * Math.sin(angle) - leafHeight / 2;
+                drawLeaf(x, y, leafWidth, leafHeight);
+            }
+        }
+
+
+        const centerX = 350;
+        const centerY = 200;
+        const radius = 70;
+        const numLeaves = 12;
+
+        drawLeavesInCircle(centerX, centerY, radius, numLeaves);
+        ctx.strokeStyle = '#E0E000';
+        drawLeaf(507, 290, 40, 30);
+        ctx.strokeStyle = '#406040';
+        ctx.beginPath();
+        ctx.arc(507, 290, 23, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+    </script>
+</body>
+
+</html>
