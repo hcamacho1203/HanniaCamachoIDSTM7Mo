@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer ejercicio Vue</title>
+    <style>
+        body {
+            /*   background-image: url('ramita-cerezo-naturaleza.jpg');
+      //      background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Georgia, serif;
+            font-weight: bold;
+            color: rgb(116, 19, 116);
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+        }
+
+        input,
+        button,
+        h3 {
+            font-size: 30px;
+        }
+
+        input,
+        h2 {
+            margin: 0;
+        }
+
+        button {
+            background-color: #7AD8FA;
+            color: rgb(14, 9, 9);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container_app">
+
+
+        <hr>
+        <ul>
+            <li v-for="item in persons">
+                {{item.name}} - {{item.lastname}}
+            </li>
+        </ul>
+
+        <form>
+
+            <fieldset>
+                <legend>
+                    Nombre
+                </legend>
+                <input type="text" v-model.number="username" name="">
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Apellido
+                </legend>
+                <input type="text" v-model.number="lastname" name="">
+            </fieldset>
+            <button type="button" v-on:click="addPerson">
+                Guardar
+            </button>
+        </form>
+
+
+
+
+        <script src="https://unpkg.com/vue@3.0.11"></script>
+        <script type="module">
+            const { createApp, ref } = Vue;
+
+            createApp({
+                setup() {
+                    const name = ref('');
+                    const count = ref(0);
+                    const num1 = ref(0);
+                    const num2 = ref(0);
+                    const result = ref('');
+                    const username = ref(''), lastname = ref('');
+                    const persons = ref([])
+
+                    return {
+                        name,
+                        count,
+                        num1,
+                        num2,
+                        result,
+                        username,
+                        lastname, 
+                        persons
+                    }
+                },
+                methods: {
+                    addPerson() {
+                        const person = {
+                            name: this.username,
+                            lastname: this.lastname
+                        }
+                        this.persons.push(person)
+
+
+                    }
+                }
+            }).mount('#container_app');
+        </script>
+</body>
+
+</html>
